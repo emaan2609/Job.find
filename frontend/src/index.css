@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.toastBody{
+    font-family: sans-serif;
+    font-size: 1.7rem;
+}
