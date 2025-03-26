@@ -27,9 +27,9 @@ app.use((req, res, next) => {
   next();
 });
 app.use(cors({
-    origin: "https://job-find-client.vercel.app", // Allow only your frontend
+    origin: "https://job-find-client.vercel.app", 
     methods: "GET,POST,PUT,DELETE",
-    credentials: true // Allow cookies & auth headers if needed
+    credentials: true
 }));
 connectToDB()
 app.use(express.json()); // Middleware to parse JSON
