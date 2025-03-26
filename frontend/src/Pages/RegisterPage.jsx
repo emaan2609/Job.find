@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
-  axios.defaults.withCredentials = true;
+  
 
 
   const navigate = useNavigate();
@@ -18,7 +18,10 @@ const RegisterPage = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post("https://job-find-server.vercel.app/", formData);
+      const response = await axios.post("https://job-find-server.vercel.app/", formData, {
+        withCredentials: true, 
+        headers: { "Content-Type": "application/json" }
+      }),;
 
   
       toast.success(response.data.message);
