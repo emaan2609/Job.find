@@ -17,7 +17,8 @@ const RegisterPage = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post("http://localhost:5000/", formData)
+      const response = await axios.post("https://job-find-server.vercel.app
+/", formData)
   
       toast.success(response.data.message);
       navigate("/login");
