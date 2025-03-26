@@ -70,7 +70,7 @@ const verifyToken = (req, res, next) => {
 // API Route to Handle Form Submission
 
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.json("API is running...");
 });
 app.post("/", body('email').trim().isEmail().isLength({min: 13}),body('password').trim().isLength({min: 8}),body('username').trim().isLength({min: 5}) ,async (req, res) => {
   try {
