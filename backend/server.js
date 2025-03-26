@@ -14,25 +14,16 @@ const app = express();
 
 const PORT = process.env.PORT || 5000
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://job-find-client.vercel.app/");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
-  
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  
-  next();
-});
-app.use(cors({
-    origin: "https://job-find-client.vercel.app", 
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true
-}));
+
+
 connectToDB()
 app.use(express.json()); // Middleware to parse JSON
+
+app.use(cors({
+    origin: ["https://job-find-client.vercel.app"], 
+    methods: ["GET,POST"],
+    credentials: true
+}));
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   if (!authHeader) {
