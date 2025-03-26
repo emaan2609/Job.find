@@ -13,7 +13,13 @@ const Resume = require('../backend/models/resume-model')
 const app = express();
 
 const PORT = process.env.PORT || 5000
-app.use(cors());
+app.use(cors({
+  
+  origin: ["https://deploy-mern-lwhq.vercel.app"],
+  methods: ["POST","GET"],
+  credentials: true,
+  
+}));
 connectToDB()
 app.use(express.json()); // Middleware to parse JSON
 const verifyToken = (req, res, next) => {
