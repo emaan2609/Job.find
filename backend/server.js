@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 5000
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://job-find-client.vercel.app/");
+  res.header("Access-Control-Allow-Origin", "https://job-find-client.vercel.app");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(cors({
-    origin: "https://job-find-client.vercel.app/", 
+    origin: "https://job-find-client.vercel.app", 
     methods: "GET,POST,PUT,DELETE",
     credentials: true
 }));
