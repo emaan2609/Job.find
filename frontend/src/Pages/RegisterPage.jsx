@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  axios.defaults.withCredentials = true;
 
 
   const navigate = useNavigate();
