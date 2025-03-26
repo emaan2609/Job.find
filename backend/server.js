@@ -74,9 +74,10 @@ app.get("/", (req, res) => {
 });
 app.post("/", body('email').trim().isEmail().isLength({min: 13}),body('password').trim().isLength({min: 8}),body('username').trim().isLength({min: 5}) ,async (req, res) => {
   try {
-    
+     console.log("Received Data:", req.body);
 
     const { username, email, password } = req.body;
+      
 
     const errors = validationResult(req)
     if(!errors.isEmpty()){
