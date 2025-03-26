@@ -14,11 +14,9 @@ const app = express();
 
 const PORT = process.env.PORT || 5000
 app.use(cors({
-  
-  origin: ["https://job-find-client.vercel.app"],
-  methods: ["POST","GET"],
-  credentials: true,
-  
+    origin: "https://job-find-client.vercel.app", // Allow only your frontend
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true // Allow cookies & auth headers if needed
 }));
 connectToDB()
 app.use(express.json()); // Middleware to parse JSON
