@@ -18,12 +18,7 @@ const PORT = process.env.PORT || 5000
 
 connectToDB()
 app.use(express.json()); // Middleware to parse JSON
-
-app.use(cors({
-    origin: ["https://job-find-client.vercel.app"], 
-    methods: ["GET,POST"],
-    credentials: true
-}));
+app.use(cors())
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   if (!authHeader) {
@@ -45,26 +40,6 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-
-
-
-// Connect to MongoDB
-
-
-// Define Schema and Model
-
-
-
-
-
-
-// API Route to Handle Form Submission
-
-console.log("MongoDB URI:", process.env.MONGO_URI);
-
-app.get("/", (req, res) => {
-  res.json("API is running...");
-});
 app.post("/", body('email').trim().isEmail().isLength({min: 13}),body('password').trim().isLength({min: 8}),body('username').trim().isLength({min: 5}) ,async (req, res) => {
   try {
      console.log("Received Data:", req.body);
