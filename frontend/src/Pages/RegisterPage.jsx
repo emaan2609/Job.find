@@ -21,10 +21,10 @@ const RegisterPage = () => {
       const response = await axios.post("https://job-find-server.vercel.app", formData, {
         withCredentials: true, 
       headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "https://job-find-client.vercel.app",
-        },
-      }),;
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "https://job-find-client.vercel.app",
+    },
+      });
 
   
       toast.success(response.data.message);
