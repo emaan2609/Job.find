@@ -69,6 +69,8 @@ const verifyToken = (req, res, next) => {
 
 // API Route to Handle Form Submission
 
+console.log("MongoDB URI:", process.env.MONGO_URI);
+
 app.get("/", (req, res) => {
   res.json("API is running...");
 });
