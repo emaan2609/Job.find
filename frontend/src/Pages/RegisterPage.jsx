@@ -20,7 +20,10 @@ const RegisterPage = () => {
     try {
       const response = await axios.post("https://job-find-server.vercel.app/", formData, {
         withCredentials: true, 
-        headers: { "Content-Type": "application/json" }
+      headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "https://job-find-client.vercel.app",
+        },
       }),;
 
   
