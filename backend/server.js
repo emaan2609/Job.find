@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(cors({
-    origin: "https://job-find-client.vercel.app", 
+    origin: "https://job-find-client.vercel.app/", 
     methods: "GET,POST,PUT,DELETE",
     credentials: true
 }));
