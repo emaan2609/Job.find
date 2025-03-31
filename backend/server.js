@@ -41,7 +41,7 @@ const verifyToken = (req, res, next) => {
 };
 
 app.get("/",(req,res)=>{
-  res.json({"Connected to Backend"})
+  res.json("Connected to Backend")
 })
 
 app.post(
