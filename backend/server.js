@@ -40,34 +40,47 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-app.post("/", body('email').trim().isEmail().isLength({min: 13}),body('password').trim().isLength({min: 8}),body('username').trim().isLength({min: 5}) ,async (req, res) => {
-  try {
-     console.log("Received Data:", req.body);
+app.post(
+  "/",
+  body("email").trim().isEmail().isLength({ min: 13 }),
+  body("password").trim().isLength({ min: 8 }),
+  body("username").trim().isLength({ min: 5 }),
+  async (req, res) => {
+    try {
+      console.log("Received Data:", req.body);
 
-    const { username, email, password } = req.body;
-      
+      const { username, email, password } = req.body;
 
-    const errors = validationResult(req)
-    if(!errors.isEmpty()){
-      console.log(errors) 
+      // Check for validation errors
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        console.log("Validation Errors:", errors.array()); // Log validation errors
+        return res.status(400).json({ message: "Invalid data", errors: errors.array() });
+      }
 
-      return res.status(400).json({message: "Invalid data"})
-      
-    }
+      // Check if the user already exists
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        console.log("User with this email already exists:", email);
+        return res.status(400).json({ message: "Email already registered" });
+      }
 
-    
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 10);
+      console.log("Hashed Password Created");
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+      // Save user to the database
       const newUser = new User({ username, email, password: hashedPassword });
-  
       await newUser.save();
+      console.log("User Saved Successfully:", newUser);
+
       res.json({ message: "User registered successfully!" });
-    
-} catch (error) {
-    console.error("Registration Error:", error);
-    res.status(500).json({ message: "Error saving user" });
+    } catch (error) {
+      console.error("Registration Error:", error); // Log full error details
+      res.status(500).json({ message: "Error saving user", error: error.message });
+    }
   }
-});
+);
 
 app.post("/login",body('email').trim().isEmail().isLength({min: 13}),body('password').trim().isLength({min: 8}),async (req, res) => {
     try {
