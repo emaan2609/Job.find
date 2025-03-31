@@ -40,6 +40,10 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+app.get("/",(req,res)=>{
+  res.json({"Connected to Backend"})
+})
+
 app.post(
   "/",
   body("email").trim().isEmail().isLength({ min: 13 }),
