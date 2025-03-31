@@ -11,7 +11,7 @@ const AllApplications = () => {
   useEffect(() => {
     const allUser = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/upload-resume');
+        const response = await axios.get('https://job-find-backend.onrender.com/upload-resume');
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
