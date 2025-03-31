@@ -21,7 +21,7 @@ const HomePage = () => {
                 return;
             }
 
-            await axios.get("http://localhost:5000/home", {
+            await axios.get("https://job-find-backend.onrender.com/home", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
