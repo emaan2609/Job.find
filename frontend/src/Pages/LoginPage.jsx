@@ -16,7 +16,7 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/login", formData);
+            const response = await axios.post("https://job-find-backend.onrender.com/login", formData);
             
             console.log("Token saved:", response.data.token);  // Debugging line
     
