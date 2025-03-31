@@ -18,7 +18,7 @@ const RegisterPage = () => {
     e.preventDefault();
   
     try {
-     const response = await axios.post("http://localhost:5000/", formData);
+     const response = await axios.post("https://job-find-backend.onrender.com/", formData);
 
   
       toast.success(response.data.message);
