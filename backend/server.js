@@ -6,8 +6,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const {body,validationResult} = require('express-validator')
 const connectToDB = require('./config/db')
-const User = require('../backend/models/user-model')
-const Resume = require('../backend/models/resume-model')
+const User = require("./models/user-model");
+const Resume = require("./models/resume-model");
 
 
 const app = express();
