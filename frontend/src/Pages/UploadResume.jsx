@@ -28,7 +28,7 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/upload-resume",
+      "https://job-find-backend.onrender.com/upload-resume",
       formData,
       {
         headers: {
